@@ -1,92 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  
-    <script src="https://web-modules-de-na1.niceincontact.com/loader/1/loader.js"></script>
-
+  <body>
     <script>
-      (function (n) {
-        window[n] =
-          window[n] ||
-          function () {
+      let chatOpened = true;
+      function logToRN(msg){
+        window.ReactNativeWebView?.PostMessage(msg);
+      }
+      function initCXone(){
+        logToRN('Loading CXone SDK...');
+        (function (n,u) {
+        window.CXoneDfo = n;
+        window[n] = window[n] || function () {
             (window[n].q = window[n].q || []).push(arguments);
           };
-        window[n].l = 1 * new Date();
-
-        var e = document.createElement("script");
-        e.async = true;
-        e.src =
-          "https://web-modules-de-na1.niceincontact.com/loader/1/loader.js";
-        document.head.appendChild(e);
-      })("cxone");
-
-      function openChat(data) {
-        try {
-          if (!data) {
-            console.error("Payload missing");
-            return;
-          }
-
-          if (typeof window.cxone !== "function") {
-            console.error("cxone not loaded yet");
-            return;
-          }
-
-          window.cxone("init", data.brandId);
-
-          window.cxone(
-            "guide",
-            "openEntryPoint",
-            data.entryPointId
-          );
-
-          window.cxone("chat", "setContactCustomField", "email", data.email);
-          window.cxone(
-            "chat",
-            "setContactCustomField",
-            "user.employeeId",
-            data.employeeId
-          );
-          window.cxone("chat", "setContactCustomField", "memberid", data.memberId);
-          window.cxone(
-            "chat",
-            "setContactCustomField",
-            "user.policyId",
-            data.policyId
-          );
-
-       
-          window.cxone(
-            "chat",
-            "setContactCustomField",
-            "hasNavigator",
-            data.hasNavigator ? 1 : 0
-          );
-        } catch (err) {
-          console.error("CXone Chat Error:", err);
-        }
+        window[n].u = u;
+          const e = document.createElement("script");
+          e.type = "module";
+          e.src = u + "?" + Math.round(Date.now() / 1e3 / 3600);
+          e.onload = () => {
+            logToRN('CXone SDK Loaded');
+            openChat();
+          };
+          e.onerror = () => logToRN('CXone SDK failed to load');
+          document.head.appendChild(e);
+        })("cxone","https://web-modules-de-na1.niceincontact.com/loader/1/loader.js");
       }
-
-      window.addEventListener("message", function (event) {
-        try {
-          var payload =
-            typeof event.data === "string"
-              ? JSON.parse(event.data)
-              : event.data;
-
-          openChat(payload);
-        } catch (err) {
-          console.error("Invalid message from RN:", err);
+      function openChat(){
+        logToRN('openchat clicked');
+        if(!window.cxone){
+          logToRN('CXone not initialized');
+          return;
         }
-      });
+        cxone('init','5781');
+        cxone('guide','init');
+        cxone('guide','openEntrypoint','3709ad1a-582c-4b6b-8ec4-f1b125611e04');
+        cxone('chat','setCaseCustomField','memberid','kjkkj6868');
+        cxone('chat','setCaseCustomField','policyid','llklkl989');
+        // cxone('chat','setCaseCustomField',);
+        logToRN('Chat open command sent');
+      }
+      window.onload = initCXone;
     </script>
-  </head>
-
-  <body>
-    <div id="chat-container"></div>
   </body>
 </html>
 
 
+
+
+
+
+  
+
+      
