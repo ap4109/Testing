@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta name="viewport" content ="width=device-width,initial-scale=1"/>
+  </head>
   <body>
     <script>
       let chatOpened = true;
@@ -27,10 +30,10 @@
       }
       function openChat(){
         logToRN('openchat clicked');
-        if(!window.cxone){
+        if(typeof cxone ==="undefined"){
           logToRN('CXone not initialized');
           return;
-        }
+        }s
         cxone('init','5781');
         cxone('guide','init');
         cxone('guide','openEntrypoint','3709ad1a-582c-4d6b-8ec4-f1b125611e04');
@@ -52,6 +55,7 @@
   
 
       
+
 
 
 
