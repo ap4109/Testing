@@ -56,7 +56,8 @@ function openChat(){
  return;
  }
 const config = window.chatConfig || {};
- logToRN(config);
+ logToRN("injectedvalue" + JSON.stringify(config));
+ console.log(config,"llklklk);
  const entryPoint = config.entryPoint;
  const memberId = config.memberId;
  const policyId = config.policyId;
@@ -81,6 +82,7 @@ window.onload = initCXone;
 
 </body>
 </html>
+
 
 
 
