@@ -57,9 +57,9 @@ function openChat(){
  }
 const config = window.chatConfig || {};
  logToRN(config);
- const entryPoint : config.entryPoint;
- const memberId : config.memberId;
- const policyId : config.policyId;
+ const entryPoint = config.entryPoint;
+ const memberId = config.memberId;
+ const policyId = config.policyId;
  cxone('init','5781');
  cxone('guide','init');
  cxone('guide','openEntrypoint',entryPoint);
@@ -81,5 +81,6 @@ window.onload = initCXone;
 
 </body>
 </html>
+
 
 
