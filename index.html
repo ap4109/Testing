@@ -55,6 +55,7 @@ function openChat(){
  logToRN("CXone not initialized yet");
  return;
  }
+ logToRN("injectionstarted");
 const config = window.chatConfig || {};
  logToRN("injectedvalue" + JSON.stringify(config));
  console.log(config,"llklklk");
@@ -62,8 +63,11 @@ const config = window.chatConfig || {};
  const memberId = config.memberId;
  const policyId = config.policyId;
  cxone('init','5781');
+  logToRN("5781");
  cxone('guide','init');
+  logToRN("init");
  cxone('guide','openEntrypoint',entryPoint);
+  logToRN("Openentrypoint",entryPoint);
  cxone('chat','setCaseCustomField','memberid',memberId);
  cxone('chat','setCaseCustomField','policyid',policyId);
 
@@ -82,6 +86,7 @@ window.onload = initCXone;
 
 </body>
 </html>
+
 
 
 
