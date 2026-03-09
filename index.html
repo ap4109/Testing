@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content ="width=device-width,initial-scale=1"/>
-  </head>
   <body>
     <script>
       let chatOpened = true;
@@ -25,7 +22,7 @@
             openChat();
           };
           e.onerror = () => logToRN('CXone SDK failed to load');
-          document.head.appendChild(e);
+          document.body.appendChild(e);
         })("cxone","https://web-modules-de-na1.niceincontact.com/loader/1/loader.js");
       }
       function openChat(){
@@ -55,6 +52,7 @@
   
 
       
+
 
 
 
