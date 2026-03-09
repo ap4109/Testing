@@ -55,13 +55,17 @@ function openChat(){
  logToRN("CXone not initialized yet");
  return;
  }
-
+const config = window.chatConfig || {};
+ logToRN(config);
+ const entryPoint : config.entryPoint;
+ const memberId : config.memberId;
+ const policyId : config.policyId;
  cxone('init','5781');
  cxone('guide','init');
- cxone('guide','openEntrypoint','3709ad1a-582c-4d6b-8ec4-f1b125611e04');
- cxone('chat','setCaseCustomField','memberid','kjkkj6868');
- cxone('chat','setCaseCustomField','policyid','llklkl989');
- cxone('chat','setContactCustomField','navigatorFlag','1');
+ cxone('guide','openEntrypoint',entryPoint);
+ cxone('chat','setCaseCustomField','memberid',memberId);
+ cxone('chat','setCaseCustomField','policyid',policyId);
+
 
  cxone('chat','enableCloseIcon', true);
 
@@ -77,4 +81,5 @@ window.onload = initCXone;
 
 </body>
 </html>
+
 
