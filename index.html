@@ -35,7 +35,7 @@ function initCXone(){
 
  logToRN("CXone SDK loaded");
 
- openChat(); // automatically open chat here
+ openChat(); 
 
  };
 
@@ -57,17 +57,21 @@ function openChat(){
  }
  logToRN("injectionstarted");
 const config = window.chatConfig || {};
- logToRN("injectedvalue" + JSON.stringify(config));
- console.log(config,"llklklk");
+
  const entryPoint = config.entryPoint;
  const memberId = config.memberId;
  const policyId = config.policyId;
+if(!entryPoint || !memberId || !policyId){
+ logToRN("CHAT_CONFIG_MISSING")
+ return;
+}
+ 
  cxone('init','5781');
-  logToRN("5781");
+
  cxone('guide','init');
-  logToRN("init");
+ 
  cxone('guide','openEntrypoint',entryPoint);
-  logToRN("Openentrypoint",entryPoint);
+  
  cxone('chat','setCaseCustomField','memberid',memberId);
  cxone('chat','setCaseCustomField','policyid',policyId);
 
@@ -86,6 +90,7 @@ window.onload = initCXone;
 
 </body>
 </html>
+
 
 
 
