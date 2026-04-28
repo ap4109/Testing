@@ -61,7 +61,8 @@ const config = window.chatConfig || {};
  const entryPoint = config.entryPoint;
  const memberId = config.memberId;
  const policyId = config.policyId;
-if(!entryPoint || !memberId || !policyId){
+ const hasCareNavigator = config.hasCareNavigator
+if(!entryPoint || !memberId || !policyId || !hasCareNavigator){
  logToRN("CHAT_CONFIG_MISSING")
  return;
 }
@@ -74,8 +75,11 @@ if(!entryPoint || !memberId || !policyId){
   
  cxone('chat','setCaseCustomField','memberid',memberId);
  cxone('chat','setCaseCustomField','policyid',policyId);
+ cxone('chat', 'setContactCustomField', 'navigatorflag', hasCareNavigator);
 
 
+
+ cxone('chat','enableCloseIcon', true);
 
  cxone('chat','openChatWindow');
 
