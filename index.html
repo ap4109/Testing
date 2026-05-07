@@ -62,7 +62,7 @@ const config = window.chatConfig || {};
  const memberId = config.memberId;
  const policyId = config.policyId;
  const hasCareNavigator = config.hasNavigator
-if(!entryPoint || !memberId || !policyId || !hasCareNavigator){
+if(!entryPoint || !memberId || !policyId || hasCareNavigator === undefined || hasCareNavigator === null){
  logToRN("CHAT_CONFIG_MISSING")
  logToRN(hasCareNavigator,memberId)
  return;
